@@ -1,9 +1,6 @@
-import librosa
+import torch
+from TTS.api import TTS
 
-filename = librosa.example('nutcracker')
-
-y, sr = librosa.load(filename)
-
-tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
-
-print('Бит примерно: {:.2f} удар в минуту'.format(tempo))
+device = "cuda" if torch.cuda.is_available() else "cpu"
+tts = TTS(model_name="tts_models/en/ljspeech/speedy-speech", progress_bar=False).to(device)
+tts.tts_to_file(text="MAXIM AND SANYA.", file_path="output.wav")
