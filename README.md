@@ -11,6 +11,7 @@
 ~~Ссылка на модель: https://github.com/librosa/librosa~~
 
 Модель переводит текстовые данные в аудио. TEXT TO SPEECH.
+Ссылка на модель: https://github.com/mozilla/TTS
 
 ## WEB-APPLICATION
 
