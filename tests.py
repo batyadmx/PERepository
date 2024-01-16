@@ -1,14 +1,18 @@
 import unittest as ut
-from main import generate_audio
+from generator import generate_audio, validate_input_text
 import os
 
 
 class AppTests(ut.TestCase):
 
     def test_generateaudio(self):
-        # main.generate_audio("Test", "test.wav")
+        generate_audio("This is test text sample", "test.wav")
 
-        # self.assertTrue("test.wav" in os.listdir("."))
+        self.assertTrue("test.wav" in os.listdir("."))
 
-        # os.remove("test.wav")
-        self.assertTrue(True)
+        os.remove("test.wav")
+
+    def test_validation(self):
+        self.assertFalse(validate_input_text("a"))
+        self.assertFalse(validate_input_text("a" * 101))
+        self.assertTrue(validate_input_text("a" * 25))
